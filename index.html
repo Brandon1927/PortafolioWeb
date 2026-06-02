@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/png" href="./img/Inicio.jpeg">
 </head>
 <body>
 
@@ -117,9 +118,16 @@
                     <div class="accordion-body">
                         <div class="accordion-content">
                             <div class="ac-tags">
+                                <p>Paginas web</p><br>
                                 <span class="tag"><a href="https://brandon1927.github.io/Complementaria/" target="_blank" class="link-normal">EcoPower</a></span>
                                 <span class="tag"><a href="https://brandon1927.github.io/Labyrinthus/#T2" target="_blank" class="link-normal">Labyrinthus</a></span>
                                 <span class="tag"><a href="https://github.com/Brandon1927/Echoes" target="_blank" class="link-normal">Echoes</a></span>
+                                <p>Prototipos funcionales</p><br>
+                                <span class="tag"><a href="https://www.figma.com/proto/8ByuuGsFW5lRzAHveQZlAC/Proyecto-Software-de-Ingl%C3%A9s?node-id=41-37&p=f&t=7VYLfpy1qMH7ctGY-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=4%3A3" target="_blank" class="link-normal">Learn Things</a></span>
+                                <span class="tag"><a href="https://www.figma.com/proto/iV9oA0IFeSHNKaM4javszv/EmoMask?node-id=27-135&p=f&t=YHGgaz5jDHFlIHxX-1&scaling=scale-down&content-scaling=fixed&page-id=6%3A91&starting-point-node-id=27%3A135&show-proto-sidebar=1" target="_blank" class="link-normal">Shazam</a></span>
+                                <span class="tag"><a href="https://www.figma.com/proto/iV9oA0IFeSHNKaM4javszv/EmoMask?node-id=6-114&p=f&t=tC1xBTiLToswghnY-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=6%3A114&show-proto-sidebar=1" target="_blank" class="link-normal">Emo Mask</a></span>
+                                <span class="tag"><a href="https://www.figma.com/proto/0DpFz1QGNdrPl5lsHFlSxW/Dise%C3%B1o?node-id=41-199&p=f&t=LvZesC1p2zMD0aS8-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=41%3A199&show-proto-sidebar=1" target="_blank" class="link-normal">Rallador tipo pez</a></span>
+                                <span class="tag"><a href="https://www.figma.com/proto/3foxh2h1kHYvV81YAxGBaC/Potrotipo2?node-id=1-62&p=f&t=eW4RFSYkYwdLp60U-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A62" target="_blank" class="link-normal">UAO smartflow</a></span>
                             </div>
                             <p>Participación en proyectos académicos y personales enfocados en el
                                 desarrollo web, aplicaciones móviles, videojuegos y sistemas de gestión.
@@ -270,7 +278,9 @@
                             </div>
                             <p>Disponible para colaborar en proyectos, prácticas profesionales y
                                 oportunidades laborales relacionadas con el desarrollo de software.
-                                Puedes contactarme mediante correo electrónico, LinkedIn o GitHub.</p>
+                                Puedes contactarme mediante correo electrónico, LinkedIn o GitHub. <br>
+                                Correo: brandon.montilla19@gmail.com<br>
+                                Numero celular: 317 711 3994</p>
                             
                         </div>
                     </div>
@@ -281,130 +291,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // ── Cursor personalizado ──
-        const glow   = document.getElementById('cursorGlow');
-        const ring   = document.getElementById('cursorRing');
-        const dot    = document.getElementById('cursorDot');
-        const canvas = document.getElementById('cursorTrail');
-        const ctx    = canvas.getContext('2d');
-
-        canvas.width  = window.innerWidth;
-        canvas.height = window.innerHeight;
-        window.addEventListener('resize', () => {
-            canvas.width  = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-
-        let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
-        let glowX  = mouseX, glowY  = mouseY;
-        let ringX  = mouseX, ringY  = mouseY;
-        let isDown = false;
-
-        // Trail: array de puntos recientes
-        const trail = [];
-        const TRAIL_LEN = 22;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            // punto central instantáneo
-            dot.style.left = mouseX + 'px';
-            dot.style.top  = mouseY + 'px';
-            trail.push({ x: mouseX, y: mouseY });
-            if (trail.length > TRAIL_LEN) trail.shift();
-        });
-
-        document.addEventListener('mousedown', () => {
-            isDown = true;
-            ring.classList.add('pressed');
-            dot.classList.add('pressed');
-        });
-        document.addEventListener('mouseup', () => {
-            isDown = false;
-            ring.classList.remove('pressed');
-            dot.classList.remove('pressed');
-        });
-
-        // Hover en elementos clicables → cursor magnético
-        document.querySelectorAll('a, button, .proyecto-card').forEach(el => {
-            el.addEventListener('mouseenter', () => ring.classList.add('hover'));
-            el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
-        });
-
-        function drawTrail() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            if (trail.length < 2) return;
-            for (let i = 1; i < trail.length; i++) {
-                const t = i / trail.length;
-                const alpha = t * 0.55;
-                const width = t * 3.5;
-                ctx.beginPath();
-                ctx.moveTo(trail[i-1].x, trail[i-1].y);
-                ctx.lineTo(trail[i].x, trail[i].y);
-                ctx.strokeStyle = `rgba(56, 217, 245, ${alpha})`;
-                ctx.lineWidth   = width;
-                ctx.lineCap     = 'round';
-                ctx.stroke();
-            }
-            // bola luminosa al final del trail
-            const last = trail[trail.length - 1];
-            const grad = ctx.createRadialGradient(last.x, last.y, 0, last.x, last.y, 10);
-            grad.addColorStop(0,   'rgba(56,217,245,0.55)');
-            grad.addColorStop(1,   'rgba(56,217,245,0)');
-            ctx.beginPath();
-            ctx.arc(last.x, last.y, 10, 0, Math.PI * 2);
-            ctx.fillStyle = grad;
-            ctx.fill();
-        }
-
-        function animate() {
-            // Glow grande (lerp lento)
-            glowX += (mouseX - glowX) * 0.07;
-            glowY += (mouseY - glowY) * 0.07;
-            glow.style.left = glowX + 'px';
-            glow.style.top  = glowY + 'px';
-
-            // Anillo exterior (lerp medio)
-            ringX += (mouseX - ringX) * 0.18;
-            ringY += (mouseY - ringY) * 0.18;
-            ring.style.left = ringX + 'px';
-            ring.style.top  = ringY + 'px';
-
-            drawTrail();
-            requestAnimationFrame(animate);
-        }
-        animate();
-
-        // Partículas
-        const container = document.getElementById('particles');
-        for (let i = 0; i < 55; i++) {
-            const p = document.createElement('div');
-            p.classList.add('particle');
-            p.style.left = Math.random() * 100 + '%';
-            p.style.top  = Math.random() * 100 + '%';
-            p.style.animationDelay    = Math.random() * 6 + 's';
-            p.style.animationDuration = (4 + Math.random() * 5) + 's';
-            p.style.width = p.style.height = (1 + Math.random() * 2.5) + 'px';
-            p.style.opacity = 0.1 + Math.random() * 0.5;
-            container.appendChild(p);
-        }
-
-        // ── Acordeón proyectos ──
-        document.querySelectorAll('.proyecto-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const isOpen = card.classList.contains('open');
-                document.querySelectorAll('.proyecto-card').forEach(c => c.classList.remove('open'));
-                if (!isOpen) card.classList.add('open');
-            });
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
-                const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1);
-                card.style.setProperty('--mx', x + '%');
-                card.style.setProperty('--my', y + '%');
-            });
-        });
-    </script>
+    <script src="./main.js"></script>
 </body>
 </html>
